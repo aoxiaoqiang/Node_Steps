@@ -12,14 +12,6 @@
 2. node应用
 3. Express or koa Framework
 
-
-### 基础入门
-[Node入门](https://www.nodebeginner.org/index-zh-cn.html)
-
-### 基础模块
-1. **http**
-```
-http.createServer(onRequest).listen(8080, () => {
-	console.log('Server in running at http://127.0.0.1:8080')
-})
-```
+目录
++ [01-基础](./01-upload/README.md)
++ [02-fs模块](./02-static_server/README.md)
