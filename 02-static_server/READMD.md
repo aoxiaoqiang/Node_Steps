@@ -131,3 +131,11 @@ mime.getExtension('text/plain');        // ⇨ 'txt'
 ```
 
 
+#### 
+1. http.createServer().listten(3000)
+2. pathname = decodeURIComponent(path.join(__dirname, url.parse(req.url).pathname))
+3. fs.statSync(pathname).isDirectory()
+4. fs.readFile(string, 'binary', (err, callback) => {  })
+5. mime.getType('test.txt')
+6. supervisor index.js
+7. 待优化项：缓存、Gzip、页面美化

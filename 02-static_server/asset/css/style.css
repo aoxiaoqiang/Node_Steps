@@ -35,6 +35,13 @@ fieldset, img { border: 0; } /* img 搭车：让链接里的 img 无边框 */
 button, input, select, textarea { font-size: 100%; } /* 使得表单元素在 ie 下能继承字体大小 */
 
 
+
+
+/* ======= 主页样式 ======= */
+body{
+  background: #F5F6F7;
+}
+
 .icon {
    width: 1em; 
    height: 1em;
@@ -55,10 +62,10 @@ ul {
 li {
   width: 25%;
   box-sizing: border-box;
-  padding: 15px 10px;
+  padding: 8px 10px;
   display: flex;
   align-items: center;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 li a {
@@ -83,5 +90,14 @@ li a:hover{
   flex: 1;
   justify-content: center;
   align-items: center;
-  font-size: 1.1em;
+}
+.path-text{
+  margin: 0 auto;
+  margin-bottom: 10px;
+  width: 80%;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 700;
+  border-bottom: 1px solid #eee;
 }

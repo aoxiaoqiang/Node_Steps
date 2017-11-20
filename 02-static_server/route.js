@@ -5,6 +5,7 @@ const fs = require('fs')
 const mime = require('mime')
 
 function route(request, response) {
+  const reqPathname = url.parse(request.url).pathname
   let pathname = path.join(__dirname, url.parse(request.url).pathname)
   pathname = decodeURIComponent(pathname) // url解码，防止中文路径乱码
 
@@ -15,7 +16,7 @@ function route(request, response) {
       response.end('404 not found')
     } else {
       if (stats.isDirectory()) {
-        // 请求文件夹
+        // 请求文件夹,遍历文件目录
         fs.readdir(pathname, (error, files) => {
           if (error) {
             // 文件读取错误
@@ -33,36 +34,37 @@ function route(request, response) {
                   svgClass = 'documents'
                 }
                 htmlBody += `<li>
-                		<svg class="icon" aria-hidden="true">
-                		  <use xlink:href="#${svgClass}"></use>
-                		</svg>
-                		<a href="${link}">${item}</a>
-                	</li>`
+                    <svg class="icon" aria-hidden="true">
+                      <use xlink:href="#${svgClass}"></use>
+                    </svg>
+                    <a href="${link}">${item}</a>
+                  </li>`
               }
             })
             htmlBody += '</ul>'
 
             response.writeHead(200, { 'Content-Type': 'text/html' })
             response.write(`<!DOCTYPE html>
-							<html>
+              <html>
 
-							<head>
-							  <meta charset="utf-8">
-							  <meta name="viewport" content="width=device-width, initial-scale=1">
-							  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-							  <meta name="description" content="">
-							  <title>静态资源</title>
-							  <link rel="stylesheet" href="/asset/font/iconfont.css" />
-							  <link rel="stylesheet" href="/asset/css/style.css" />
+              <head>
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+                <meta name="description" content="">
+                <title>静态资源</title>
+                <link rel="stylesheet" href="/asset/font/iconfont.css" />
+                <link rel="stylesheet" href="/asset/css/style.css" />
 
-							  <script src="/asset/font/iconfont.js"></script>
+                <script src="/asset/font/iconfont.js"></script>
 
-							  <body>
-							  	<h3 class="title-text">静态资源</h3>
-							  	${htmlBody}
-							  </body>
+                <body>
+                  <h3 class="title-text">静态资源</h3>
+                  <p class="path-text">${reqPathname}</p>
+                  ${htmlBody}
+                </body>
 
-							</html>`)
+              </html>`)
             response.end('</ul>')
           }
         })
@@ -85,7 +87,7 @@ function route(request, response) {
 
 }
 
-
+// 文件对应图标名称获取
 function iconName(extname) {
   let name = extname
   if (['json', 'md'].indexOf(extname) >= 0) {
