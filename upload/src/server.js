@@ -12,7 +12,7 @@ function start(route, handlers) {
   	const pathname = url.parse(reqest.url).pathname
 
   	route(pathname, handlers, reqest, response)
-  	
+
   	// response.writeHead(200, { 'Content-Type': 'text/plain' })
   	// response.write(pathname)
   	// response.end()

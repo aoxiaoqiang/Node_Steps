@@ -10,7 +10,7 @@ function start(route) {
   })
 
   // server端口监听
-  server.listen(port, host, () => {
+  server.listen(port, () => {
     console.log(`The server is running at http://${host}:${port}`)
   })
 }

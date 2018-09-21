@@ -6,6 +6,6 @@ const port = 3000;
 
 // 创建Server, 添加路由处理
 const server = http.createServer(router);
-server.listen(port, hostname, () => {
+server.listen(port, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });

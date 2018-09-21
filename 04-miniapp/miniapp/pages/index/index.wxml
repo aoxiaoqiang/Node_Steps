@@ -1,0 +1,7 @@
+<view>
+  <view>home</view>
+  <view>{{title}}</view>
+
+
+  <button open-type="contact">进入客服会话</button>
+</view>
